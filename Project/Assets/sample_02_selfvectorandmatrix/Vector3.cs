@@ -6,6 +6,7 @@ namespace VecAndMtr
     public class Vector3
     {
 
+        #region 常量
         public static readonly Vector3 UP = new Vector3(0, 1, 0);
         public static readonly Vector3 DOWN = new Vector3(0, -1, 0);
         public static readonly Vector3 LEFT = new Vector3(1, 0, 0);
@@ -16,7 +17,10 @@ namespace VecAndMtr
         public static readonly Vector3 X_AXIS = new Vector3(1, 0, 0);
         public static readonly Vector3 Y_AXIS = new Vector3(0, 1, 0);
         public static readonly Vector3 Z_AXIS = new Vector3(0, 0, 1);
+        #endregion
+        
 
+        #region 成员属性
         /// <summary>
         /// x分量
         /// </summary>
@@ -53,7 +57,10 @@ namespace VecAndMtr
                 return (float)Math.Sqrt(this.lengthSquard);
             }
         }
+        #endregion;
 
+
+        #region 构造方法
         /// <summary>
         /// Vector3构造函数
         /// </summary>
@@ -74,7 +81,11 @@ namespace VecAndMtr
         {
             this.Set(vec);
         }
+        #endregion
 
+
+
+        #region 公共方法
         /// <summary>
         /// 给当前Vector3对象设值
         /// </summary>
@@ -130,42 +141,7 @@ namespace VecAndMtr
         }
 
         /// <summary>
-        /// 点乘
-        /// </summary>
-        /// <param name="u">u向量</param>
-        /// <param name="v">v向量</param>
-        /// <returns></returns>
-        public static float Dot(Vector3 u, Vector3 v)
-        {
-            return u.x * v.x + u.y * v.y + u.z * v.z;
-        }
-
-        /// <summary>
-        /// 点乘
-        /// </summary>
-        /// <param name="u">u向量长度</param>
-        /// <param name="v">v向量长度</param>
-        /// <param name="sitaRad">向量夹角(弧度制)</param>
-        /// <returns></returns>
-        public static float Dot(float u, float v, double sitaRad)
-        {
-            return u * v * (float)Math.Cos(sitaRad);
-        }
-
-        /// <summary>
-        /// 点乘
-        /// </summary>
-        /// <param name="u">u向量长度</param>
-        /// <param name="v">v向量长度</param>
-        /// <param name="sitaRad">向量夹角(角度制)</param>
-        /// <returns></returns>
-        public static float Dot(float u, float v, float sitaDegree)
-        {
-            return u * v * (float)Math.Cos((double)(sitaDegree / 180 * Math.PI));
-        }
-
-        /// <summary>
-        /// 差乘
+        /// 向量叉乘
         /// </summary>
         /// <returns></returns>
         public Vector3 Cross(Vector3 vec)
@@ -174,36 +150,6 @@ namespace VecAndMtr
             float ty = z * vec.x - x * vec.z;
             float tz = x * vec.y - y * vec.x;
             return new Vector3(tx, ty, tz, 0f);
-        }
-
-        /// <summary>
-        /// 差乘
-        /// </summary>
-        /// <param name="u">u向量</param>
-        /// <param name="v">v向量</param>
-        /// <returns></returns>
-        public static Vector3 Cross(Vector3 u, Vector3 v)
-        {
-            float tx = u.y * v.z - u.z * v.y;
-            float ty = u.z * v.x - u.x * v.z;
-            float tz = u.x * v.y - u.y * v.x;
-            return new Vector3(tx, ty, tz, 0f);
-        }
-
-        /// <summary>
-        /// 向量叉乘
-        /// </summary>
-        /// <param name=""></param>
-        /// <param name="tx"></param>
-        /// <param name="ty"></param>
-        /// <param name="tz"></param>
-        /// <returns></returns>
-        public static Vector3 operator *(Vector3 u, Vector3 v)
-        {
-            float tx = u.y * v.z - u.z * v.y;
-            float ty = u.z * v.x - u.x * v.z;
-            float tz = u.x * v.y - u.y * v.x;
-            return new Vector3(tx, ty, tz, 0);
         }
 
         /// <summary>
@@ -229,62 +175,6 @@ namespace VecAndMtr
             float tx = x - vec.x;
             float ty = y - vec.y;
             float tz = z - vec.z;
-            return new Vector3(tx, ty, tz, 0f);
-        }
-
-        /// <summary>
-        /// 向量加法
-        /// </summary>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static Vector3 Add(Vector3 u, Vector3 v)
-        {
-            float tx = u.x + v.z;
-            float ty = u.x + v.z;
-            float tz = u.x + v.z;
-            return new Vector3(tx, ty, tz, 0f);
-        }
-
-        /// <summary>
-        /// 重载向量加法运算符
-        /// </summary>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static Vector3 operator +(Vector3 u, Vector3 v)
-        {
-            float tx = u.x + v.z;
-            float ty = u.x + v.z;
-            float tz = u.x + v.z;
-            return new Vector3(tx, ty, tz, 0);
-        }
-
-        /// <summary>
-        /// 向量减法
-        /// </summary>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static Vector3 operator -(Vector3 u, Vector3 v)
-        {
-            float tx = u.x - v.z;
-            float ty = u.x - v.z;
-            float tz = u.x - v.z;
-            return new Vector3(tx, ty, tz, 0);
-        }
-
-        /// <summary>
-        /// 向量减法
-        /// </summary>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static Vector3 Sub(Vector3 u, Vector3 v)
-        {
-            float tx = u.x - v.z;
-            float ty = u.x - v.z;
-            float tz = u.x - v.z;
             return new Vector3(tx, ty, tz, 0f);
         }
 
@@ -328,6 +218,132 @@ namespace VecAndMtr
         {
             return String.Format("Vetor3==> x:{0},y:{1},z:{2},length:{3}", x, y, z, length);
         }
+        #endregion
+
+
+
+        #region 静态方法
+        /// <summary>
+        /// 向量加法
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vector3 Add(Vector3 u, Vector3 v)
+        {
+            float tx = u.x + v.z;
+            float ty = u.x + v.z;
+            float tz = u.x + v.z;
+            return new Vector3(tx, ty, tz, 0f);
+        }
+
+        /// <summary>
+        /// 向量加法运算符
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vector3 operator +(Vector3 u, Vector3 v)
+        {
+            float tx = u.x + v.z;
+            float ty = u.x + v.z;
+            float tz = u.x + v.z;
+            return new Vector3(tx, ty, tz, 0);
+        }
+
+        /// <summary>
+        /// 向量减法
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vector3 Sub(Vector3 u, Vector3 v)
+        {
+            float tx = u.x - v.z;
+            float ty = u.x - v.z;
+            float tz = u.x - v.z;
+            return new Vector3(tx, ty, tz, 0f);
+        }
+
+        /// <summary>
+        /// 向量减运算符
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vector3 operator -(Vector3 u, Vector3 v)
+        {
+            float tx = u.x - v.z;
+            float ty = u.x - v.z;
+            float tz = u.x - v.z;
+            return new Vector3(tx, ty, tz, 0);
+        }
+
+        /// <summary>
+        /// 点乘
+        /// </summary>
+        /// <param name="u">u向量</param>
+        /// <param name="v">v向量</param>
+        /// <returns></returns>
+        public static float Dot(Vector3 u, Vector3 v)
+        {
+            return u.x * v.x + u.y * v.y + u.z * v.z;
+        }
+
+        /// <summary>
+        /// 点乘
+        /// </summary>
+        /// <param name="u">u向量长度</param>
+        /// <param name="v">v向量长度</param>
+        /// <param name="sitaRad">向量夹角(弧度制)</param>
+        /// <returns></returns>
+        public static float Dot(float u, float v, double sitaRad)
+        {
+            return u * v * (float)Math.Cos(sitaRad);
+        }
+
+        /// <summary>
+        /// 点乘
+        /// </summary>
+        /// <param name="u">u向量长度</param>
+        /// <param name="v">v向量长度</param>
+        /// <param name="sitaRad">向量夹角(角度制)</param>
+        /// <returns></returns>
+        public static float Dot(float u, float v, float sitaDegree)
+        {
+            return u * v * (float)Math.Cos((double)(sitaDegree / 180 * Math.PI));
+        }
+
+        /// <summary>
+        /// 向量叉乘
+        /// </summary>
+        /// <param name="u">u向量</param>
+        /// <param name="v">v向量</param>
+        /// <returns></returns>
+        public static Vector3 Cross(Vector3 u, Vector3 v)
+        {
+            float tx = u.y * v.z - u.z * v.y;
+            float ty = u.z * v.x - u.x * v.z;
+            float tz = u.x * v.y - u.y * v.x;
+            return new Vector3(tx, ty, tz, 0f);
+        }
+
+        /// <summary>
+        /// 向量叉乘运算符
+        /// </summary>
+        /// <param name=""></param>
+        /// <param name="tx"></param>
+        /// <param name="ty"></param>
+        /// <param name="tz"></param>
+        /// <returns></returns>
+        public static Vector3 operator *(Vector3 u, Vector3 v)
+        {
+            float tx = u.y * v.z - u.z * v.y;
+            float ty = u.z * v.x - u.x * v.z;
+            float tz = u.x * v.y - u.y * v.x;
+            return new Vector3(tx, ty, tz, 0);
+        }
+        #endregion
 
     }
 }

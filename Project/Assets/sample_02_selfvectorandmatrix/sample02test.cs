@@ -19,7 +19,7 @@ public class sample02test : MonoBehaviour
         u.SetPositions(new UnityEngine.Vector3[] { new UnityEngine.Vector3(0, 0, 0), new UnityEngine.Vector3(1, 2, 3) });
         v.SetPositions(new UnityEngine.Vector3[] { new UnityEngine.Vector3(0, 0, 0), new UnityEngine.Vector3(-2, 3.5f, 7) });
         w.SetPositions(new UnityEngine.Vector3[] { new UnityEngine.Vector3(0, 0, 0), UnityEngine.Vector3.Cross(new UnityEngine.Vector3(1, 2, 3), new UnityEngine.Vector3(-2, 3.5f, 7)) });
-
+        Matrix4x4
     }
 
 }
